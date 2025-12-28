@@ -55,4 +55,6 @@ class FileDispatcher implements LogDispatcherInterface
     }
 }
 
+// @todo write WhatsappDispatcher, EmailDispatcher, SMSDispatcher, SlackDispatche.
+
 ?>

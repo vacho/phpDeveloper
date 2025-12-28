@@ -16,6 +16,8 @@ use App\LogProcessor\FileDispatcher;
 // 1. Create a dummy log file for demonstration
 //$tempFile = tempnam(sys_get_temp_dir(), 'logs');
 $tempFile = tempnam(__DIR__, 'logs');
+
+// @todo implement the logic to have priority between chanels message.
 $mockData = [
     json_encode(['level' => 'INFO', 'message' => 'System started', 'timestamp' => time()]),
     json_encode(['level' => 'ERROR', 'message' => 'Zapatito Database connection failed', 'timestamp' => time()]),
