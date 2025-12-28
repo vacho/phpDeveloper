@@ -4,13 +4,18 @@ declare(strict_types=1);
 namespace App\LogProcessor;
 
 use Generator;
+use Exception;
 
+/**
+ * Custom Exception for Domain Specific Errors
+ */
+class LogProcessorException extends Exception {}
 
 /**
  * Memory Efficient Reader: Uses a Generator to handle large files.
  */
 class LogReader
-{
+{   
     public function __construct(private string $filePath)
     {
         if (!file_exists($this->filePath)) {

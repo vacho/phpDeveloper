@@ -6,6 +6,8 @@ namespace App\LogProcessor;
 require_once('LogDispatcher.php');
 require_once('LogReader.php');
 
+use App\LogProcessor\LogDispatcherInterface;
+
 /**
  * The Orchestrator: Demonstrates Dependency Injection and logic decoupling.
  */

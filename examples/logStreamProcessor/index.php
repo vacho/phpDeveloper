@@ -1,35 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace App\LogProcessor;
 require_once('LogReader.php');
 require_once('CriticalLogProcessor.php');
 require_once('LogDispatcher.php');
 
-
-/**
- * CHALLENGE 1: Implement the Generator
- * Create a class 'LogReader' that accepts a file path and yields 
- * decoded JSON objects one by one.
- * DONE! : LogReader.php
- */
-
-/**
- * CHALLENGE 2: Design the Contract
- * Create an interface for Dispatchers and a Trait for Log Formatting.
- * DONE! : LogDispacher.php
- */
-
-/**
- * CHALLENGE 3: Implementation
- * Create a 'CriticalLogProcessor' that coordinates the reader and the dispatchers.
- * DONE!: CriticalLogProcessor
- */
-
-// --- TEST DATA GENERATOR (Helper for the dev) ---
-// Use this to simulate a log line for your test
-// {"level": "ERROR", "message": "Database connection timed out", "timestamp": 1622548800}
-
+use App\LogProcessor\LogReader;
+use App\LogProcessor\CriticalLogProcessor;
+use App\LogProcessor\ConsoleDispatcher;
+use App\LogProcessor\FileDispatcher;
 
 /**
  * --- EXECUTION EXAMPLE ---
@@ -44,7 +23,7 @@ $mockData = [
     json_encode(['level' => 'ERROR', 'message' => 'Disk space low', 'timestamp' => time()]),
 ];
 file_put_contents($tempFile, implode(PHP_EOL, $mockData));
-echo "Done generating log files... into $tempFile";
+echo "$tempFile generated..." . PHP_EOL . PHP_EOL;
 
 try {
     // 2. Initialize components
@@ -56,12 +35,12 @@ try {
     $processor->addDispatcher(new FileDispatcher());
 
     // 4. Run process
-    echo "--- Starting Log Processing ---" . PHP_EOL;
+    echo "--- Starting Log Processing ---" . PHP_EOL . PHP_EOL;
     $processor->process($reader, 'ERROR');
-    echo "--- Processing Complete ---" . PHP_EOL;
+    echo "--- Processing Complete ---" . PHP_EOL . PHP_EOL;
 
 } catch (Exception $e) {
-    echo "Fatal Error: " . $e->getMessage();
+    echo "Fatal Error: " . $e->getMessage() . PHP_EOL;
 } finally {
     unlink($tempFile); // Cleanup
 }
