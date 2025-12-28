@@ -39,7 +39,7 @@ try {
     // 4. Run process
     echo "--- Starting Log Processing ---" . PHP_EOL . PHP_EOL;
     $processor->process($reader, 'ERROR');
-    echo "--- Processing Complete ---" . PHP_EOL . PHP_EOL;
+    echo PHP_EOL . "--- Processing Complete ---" . PHP_EOL . PHP_EOL;
 
 } catch (Exception $e) {
     echo "Fatal Error: " . $e->getMessage() . PHP_EOL;
