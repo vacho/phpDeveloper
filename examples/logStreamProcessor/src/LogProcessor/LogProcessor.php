@@ -3,15 +3,14 @@ declare(strict_types=1);
 
 namespace App\LogProcessor;
 
-require_once('LogDispatcher.php');
-require_once('LogReader.php');
+require_once 'src/LogDispatcher/LogDispatcherInterface.php';
 
-use App\LogProcessor\LogDispatcherInterface;
+use App\LogDispatcher\LogDispatcherInterface;
 
 /**
  * The Orchestrator: Demonstrates Dependency Injection and logic decoupling.
  */
-final class CriticalLogProcessor
+final class LogProcessor
 {
     /** @var LogDispatcherInterface[] */
     private array $dispatchers = [];

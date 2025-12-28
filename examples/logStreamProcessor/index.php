@@ -1,14 +1,18 @@
 <?php
 declare(strict_types=1);
 
-require_once('LogReader.php');
-require_once('CriticalLogProcessor.php');
-require_once('LogDispatcher.php');
+require_once 'src/LogProcessor/LogProcessorException.php';
+require_once 'src/LogProcessor/LogReader.php';
+require_once 'src/LogDispatcher/LogDispatcherInterface.php';
+require_once 'src/LogDispatcher/LogFormatterTrait.php';   
+require_once 'src/LogProcessor/LogProcessor.php';
+require_once 'src/LogDispatcher/ConsoleDispatcher.php';
+require_once 'src/LogDispatcher/FileDispatcher.php';
 
 use App\LogProcessor\LogReader;
-use App\LogProcessor\CriticalLogProcessor;
-use App\LogProcessor\ConsoleDispatcher;
-use App\LogProcessor\FileDispatcher;
+use App\LogProcessor\LogProcessor;
+use App\LogDispatcher\ConsoleDispatcher;
+use App\LogDispatcher\FileDispatcher;
 
 /**
  * --- EXECUTION EXAMPLE ---
@@ -30,7 +34,7 @@ echo "$tempFile generated..." . PHP_EOL . PHP_EOL;
 try {
     // 2. Initialize components
     $reader = new LogReader($tempFile);
-    $processor = new CriticalLogProcessor();
+    $processor = new LogProcessor();
 
     // 3. Inject drivers
     $processor->addDispatcher(new ConsoleDispatcher());
