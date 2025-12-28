@@ -37,9 +37,11 @@ try {
     $processor->addDispatcher(new FileDispatcher());
 
     // 4. Run process
-    echo "--- Starting Log Processing ---" . PHP_EOL . PHP_EOL;
+    echo "--- Starting Log Processing ---"; 
+    echo PHP_EOL . PHP_EOL;
     $processor->process($reader, 'ERROR');
-    echo PHP_EOL . "--- Processing Complete ---" . PHP_EOL . PHP_EOL;
+    echo PHP_EOL;
+    echo "--- Processing Complete ---";
 
 } catch (Exception $e) {
     echo "Fatal Error: " . $e->getMessage() . PHP_EOL;
