@@ -41,9 +41,16 @@ $numbers['four'] = 4;
 
 var_dump($numbers);
  */
-
+/*
 $str = 'Which watch would you watch?';
 $pattern = '/w/i';
 echo preg_match_all($pattern, $str);
+ */
 
+//$jsonobj = '{"Peter":35,"Ben":37,"Joe":43}';
+//$obj = json_decode($jsonobj);
+
+//var_dump($_SERVER);
+
+var_dump(10 <=> 20);
 ?>
